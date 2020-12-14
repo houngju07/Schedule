@@ -62,6 +62,7 @@ BuildCmd=
 
 [Unit2]
 FileName=linkedList.c
+CompileCpp=0
 Folder=
 Compile=1
 Link=1
