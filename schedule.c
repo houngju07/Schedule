@@ -86,23 +86,16 @@ void* sched_genSchedInfo(char* name, char* place, int type, int month, int day)
 	schedInfo_t* schedPtr;
 	
 	//error handler
-	schedPtr = create_node(obj);
 	if(schedPtr==NULL){
-		printf("memory allocation error\n");
-		return -1;		
+		printf("memory allocation error\n");		
 	}
 	
 	//allocate memory and set the member variables
-	if(list == NULL){
-		list=schedPtr;
+	if(schedPtr != NULL){
+	
 	}
 	else{
-		srchPtr = list;
-		while(srchPtr->next != NULL){
-			srchPtr = (struct linknode*)srchPtr->next;
-		}	
-		//Linking
-		srchPtr-> next = schedPtr;
+	
 	}
 
 	
@@ -115,13 +108,14 @@ void* sched_genSchedInfo(char* name, char* place, int type, int month, int day)
 float sched_getMonth(void* obj)
 {
 	struct schedInfo_t* month;
+	schedInfo_t* schedPtr;
 
-	month = (struct schedInfo*)malloc(sizeof(struct schedInfo));
+	month = ((float)schedInfo_t*)malloc(sizeof(schedInfo_t));
 	if(month != NULL){
 		month = obj;
 	}
 	return month;
-		};
+		
 }
 
 
