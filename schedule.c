@@ -86,9 +86,25 @@ void* sched_genSchedInfo(char* name, char* place, int type, int month, int day)
 	schedInfo_t* schedPtr;
 	
 	//error handler
-
-	//allocate memory and set the member variables
+	schedPtr = create_node(obj);
+	if(schedPtr==NULL){
+		printf("memory allocation error\n");
+		return -1;		
+	}
 	
+	//allocate memory and set the member variables
+	if(list == NULL){
+		list=schedPtr;
+	}
+	else{
+		srchPtr = list;
+		while(srchPtr->next != NULL){
+			srchPtr = (struct linknode*)srchPtr->next;
+		}	
+		//Linking
+		srchPtr-> next = schedPtr;
+	}
+
 	
 	return (void*)schedPtr;
 }
@@ -98,14 +114,28 @@ void* sched_genSchedInfo(char* name, char* place, int type, int month, int day)
 //get month information from the scheduler info structure
 float sched_getMonth(void* obj)
 {
-	
+	struct schedInfo_t* month;
+
+	month = (struct schedInfo*)malloc(sizeof(struct schedInfo));
+	if(month != NULL){
+		month = obj;
+	}
+	return month;
+		};
 }
 
 
 //get type information from the scheduler info structure
 int sched_getType(void* obj)
 {
-	
+	struct schedInfo_t* type;
+
+	type = (struct schedInfo*)malloc(sizeof(struct schedInfo));
+	if(type != NULL){
+		type = obj;
+	}
+	return type;
+		};
 }
 
 
@@ -113,7 +143,14 @@ int sched_getType(void* obj)
 //get place string information from the scheduler info structure
 char* sched_getPlace(void* obj)
 {
+	struct schedInfo_t* place;
 
+	place = (struct schedInfo*)malloc(sizeof(struct schedInfo));
+	if(place != NULL){
+		place = obj;
+	}
+	return place;
+		};
 }
 
 //convert the name of the type into the enum(integer) value
